@@ -28,11 +28,10 @@ def get_solution_part1(input_list: List[str]) -> int:
 
 def get_solution_part2(input_list: List[str]) -> int:
     total: int = 0
-    numre: str = r"(\d|" + r"|".join(numbers.keys()) + r")"
+    numre: str = r"(?=(\d|" + r"|".join(numbers.keys()) + r"))"
     first: str
     last: str
     for line in input_list:
-        print(line)
         parsed: List[str] = findall(numre, line)
         if parsed[0] in numbers:
             first = numbers[parsed[0]]
@@ -42,8 +41,6 @@ def get_solution_part2(input_list: List[str]) -> int:
             last = numbers[parsed[-1]]
         else:
             last = parsed[-1]
-        print(parsed)
-        print([first, last])
         total += int(first + last)
     return total
 
